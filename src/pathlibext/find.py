@@ -6,6 +6,7 @@ from pathlib import Path
 def _find(root: Path = ".", type_: str = "fd", wildcards: str = None):
     for top, dirs, files in os.walk(root):
         top = Path(top)
+        pass
         if "f" in type_:
             for name in files:
                 if wildcards is None or fnmatch.fnmatch(name, wildcards):
