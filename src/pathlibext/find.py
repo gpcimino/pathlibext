@@ -17,8 +17,6 @@ def _find(root: Path = ".", type_: str = "fd", wildcards: str = None):
                     yield top / name
 
 
-Path.find = _find
-
 if __name__ == "__main__":
     for item in _find(Path("."), "d", "py*"):
         print(item)
