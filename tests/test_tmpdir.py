@@ -19,3 +19,8 @@ class TestTmpDir(BaseTest):
         tmpdir = self.root.tmpdir_in(prefix="A", suffix="ZZZ")
         self.assertTrue(tmpdir.name.startswith("A"))
         self.assertTrue(tmpdir.name.endswith("ZZZ"))
+
+    def test_tmpdir_is_created(self):
+        tmpdir = Path.tmpdir()
+        self.assertTrue(tmpdir.exists())
+        self.assertTrue(tmpdir.is_dir())

@@ -8,3 +8,7 @@ def _systmpdir():
 
 def _tmpdir_in(self, suffix=None, prefix=None):
     return Path(tempfile.mkdtemp(suffix, prefix, self))
+
+
+def _tmpdir(suffix=None, prefix=None):
+    return Path(tempfile.mkdtemp(suffix, prefix))
