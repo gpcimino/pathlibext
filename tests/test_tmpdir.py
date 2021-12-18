@@ -11,6 +11,7 @@ class TestTmpDir(BaseTest):
 
     def test_tmpdir_in_existing_directory(self):
         tmpdir = self.root.tmpdir_in()
+        self.assertEqual(self.root, tmpdir.parent)
         self.assertTrue(tmpdir.exists())
         self.assertTrue(tmpdir.is_dir())
 
