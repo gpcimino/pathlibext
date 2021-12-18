@@ -7,8 +7,8 @@ import pathlibext.find  # pylint: disable=unused-import
 
 class BaseTest(unittest.TestCase):
     def setUp(self):
-        self.tmp_dir = tempfile.TemporaryDirectory()
-        self.root = Path(self.tmp_dir.name)
+        self.__tmpdir = tempfile.TemporaryDirectory()
+        self.root = Path(self.__tmpdir.name)
         # self.root = Path.mktempdir()
         self.files = [
             self.root / "a.txt",
@@ -27,4 +27,4 @@ class BaseTest(unittest.TestCase):
         return Counter(expected) == Counter(actual)
 
     def tearDown(self):
-        self.tmp_dir.cleanup()
+        self.__tmpdir.cleanup()
