@@ -8,7 +8,7 @@ def _find(
     type_: str = "fd",
     wildcards: str = None,
     mindepth: int = 0,
-    maxdepth: int = int(float("inf")),
+    maxdepth: int = 64000,
 ):
     def _depth(path: Path):
         return str(path).count(os.path.sep)
