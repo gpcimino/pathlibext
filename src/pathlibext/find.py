@@ -1,11 +1,18 @@
-import os
 import fnmatch
+import os
 from pathlib import Path
 
 
-def _find(self: Path = ".", type_: str = "fd", wildcards: str = None, mindepth=0, maxdepth=float("inf")):
+def _find(
+    self: Path = ".",
+    type_: str = "fd",
+    wildcards: str = None,
+    mindepth=0,
+    maxdepth=float("inf"),
+):
     def _depth(path):
         return str(path).count(os.path.sep)
+
     rootdir = str(self)
     root_depth = _depth(rootdir)
     for top, dirs, files in os.walk(rootdir):
@@ -23,5 +30,4 @@ def _find(self: Path = ".", type_: str = "fd", wildcards: str = None, mindepth=0
         elif depth > maxdepth:
             del dirs[:]  # too deep, don't recurse
         else:
-            continue # need to go deeper
-
+            continue  # need to go deeper

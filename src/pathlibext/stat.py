@@ -1,21 +1,20 @@
-from datetime import  datetime
+from datetime import datetime
 
 
 def _size(self, unit="bytes"):
     # follow_symlinks=True
     size_bytes = self.stat().st_size
-    if unit == "bytes" or unit == "byte" or unit == "B":
+    if unit in ("bytes", "byte", "B"):
         return size_bytes
-    elif unit == "kilobytes" or unit == "kilobyte" or unit == "KB":
+    if unit in ("kilobytes", "kilobyte", "KB"):
         return size_bytes / 1024
-    elif unit == "megabytes" or unit == "megabyte" or unit == "MB":
+    if unit in ("megabytes", "megabyte", "MB"):
         return size_bytes / (1024 ** 2)
-    elif unit == "gigabytes" or unit == "gigabyte" or unit == "GB":
+    if unit in ("gigabytes", "gigabyte", "GB"):
         return size_bytes / (1024 ** 3)
-    elif unit == "terabytes" or unit == "terabyte" or unit == "TB":
+    if unit in ("terabytes", " terabyte", "TB"):
         return size_bytes / (1024 ** 4)
-    else:
-        raise ValueError("unknown unit of measure for file size")
+    raise ValueError("unknown unit of measure for file size")
 
 
 def _access_time(self):
@@ -31,4 +30,3 @@ def _modification_time(self):
 def _ctime(self):
     t = self.stat().st_ctime
     return datetime.fromtimestamp(t)
-

@@ -1,6 +1,6 @@
-from pathlib import Path
-from base_test import BaseTest
 import pathlibext  # pylint: disable=unused-import
+
+from tests.base_test import BaseTest
 
 
 class TestMatch(BaseTest):

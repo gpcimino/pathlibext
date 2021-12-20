@@ -1,14 +1,17 @@
+import tempfile
 import unittest
 from collections import Counter
 from pathlib import Path
-import tempfile
+
 import pathlibext.find  # pylint: disable=unused-import
 
 
 class BaseTest(unittest.TestCase):
     def setUp(self):
+        # pylint: disable=consider-using-with
         self.__tmpdir = tempfile.TemporaryDirectory()
         self.root = Path(self.__tmpdir.name)
+        self.files = []
 
     def create_file_tree(self):
         self.files = [
@@ -31,6 +34,7 @@ class BaseTest(unittest.TestCase):
         return [f.parent for f in self.files]
 
     def assert_list_equal_unordered(self, expected, actual):
+        # pylint: disable=no-self-use
         return Counter(expected) == Counter(actual)
 
     def tearDown(self):

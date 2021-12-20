@@ -1,0 +1,6 @@
+---
+name: <project name>  # Name of this project
+type: <project name>  # Project type, allowed values: module, library, application, documentation, configuration management
+languages: [<language1>, <language2>, ...]  # Programming language used, one or many of the following: Ansible, C, C#, C++, Docker, HTML, Java, Javascript, Matlab, Python, R, SQL, XML
+classification: <classification>  # Classification of the project, allowed values: NATO UNCLASSIFIED, NATO RESTRICTED, PUBLIC RELEASABLE
+releasability: <releasability statement>  # Releasability statement for this project

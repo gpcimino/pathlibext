@@ -1,11 +1,18 @@
 import os
-
 from pathlib import Path
-from pathlibext.rmtree import _rmtree
+
 from pathlibext.find import _find
-from pathlibext.tmpdir import _systmpdir, _tmpdir_in, _tmpdir
-from pathlibext.stat import _size, _access_time, _modification_time,_ctime
-from pathlibext.shell import _copy, _copy_preserve_metadata, _move
+from pathlibext.rmtree import _rmtree
+from pathlibext.shell import _copy
+from pathlibext.shell import _copy_preserve_metadata
+from pathlibext.shell import _move
+from pathlibext.stat import _access_time
+from pathlibext.stat import _ctime
+from pathlibext.stat import _modification_time
+from pathlibext.stat import _size
+from pathlibext.tmpdir import _systmpdir
+from pathlibext.tmpdir import _tmpdir
+from pathlibext.tmpdir import _tmpdir_in
 
 Path.rmtree = _rmtree
 Path.find = _find
@@ -18,7 +25,7 @@ Path.size = _size
 Path.access_time = _access_time
 Path.modification_time = _modification_time
 
-if os.name == 'Windows':
+if os.name == "Windows":
     Path.creation_time = _ctime
 else:
     Path.metadatachange_time = _ctime
