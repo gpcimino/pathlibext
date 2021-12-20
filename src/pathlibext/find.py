@@ -7,10 +7,10 @@ def _find(
     self: Path = ".",
     type_: str = "fd",
     wildcards: str = None,
-    mindepth=0,
-    maxdepth=float("inf"),
+    mindepth: int = 0,
+    maxdepth: int = int(float("inf")),
 ):
-    def _depth(path):
+    def _depth(path: Path):
         return str(path).count(os.path.sep)
 
     rootdir = str(self)

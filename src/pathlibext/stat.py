@@ -1,7 +1,7 @@
 from datetime import datetime
 
 
-def _size(self, unit="bytes"):
+def _size(self, unit: str = "bytes"):
     # follow_symlinks=True
     size_bytes = self.stat().st_size
     if unit in ("bytes", "byte", "B"):
