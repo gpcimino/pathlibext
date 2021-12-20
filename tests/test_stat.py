@@ -11,7 +11,6 @@ class TestStat(BaseTest):
         file.write_text("abc")
         self.assertEqual(3, file.size())
 
-
     def test_file_size_in_gigabyte(self):
         file = self.root / "test.txt"
         file.write_text("abc")
