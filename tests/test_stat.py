@@ -1,4 +1,5 @@
 import os
+import unittest
 from datetime import datetime
 from pathlib import Path
 from base_test import BaseTest
@@ -22,8 +23,17 @@ class TestStat(BaseTest):
         expected_access_time = os.stat(str(file)).st_atime
         self.assertEqual(datetime.fromtimestamp(expected_access_time), file.access_time())
 
-    def test_modification_time(self):
+    @unittest.skipIf(os.name == 'Windows', "Run only on linux/mac")
+    def test_creation_time(self):
         file = self.root / "test.txt"
         file.write_text("abc")
         expected_access_time = os.stat(str(file)).st_ctime
-        self.assertEqual(datetime.fromtimestamp(expected_access_time), file.modification_time())
+        self.assertEqual(datetime.fromtimestamp(expected_access_time), file.metadatachange_time())
+
+    @unittest.skipIf(os.name != 'Windows', "Run only on windows")
+    def test_metadatachange_time(self):
+        file = self.root / "test.txt"
+        file.write_text("abc")
+        expected_access_time = os.stat(str(file)).st_ctime
+        self.assertEqual(datetime.fromtimestamp(expected_access_time), file.creation_time())
+
