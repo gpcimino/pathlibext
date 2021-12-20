@@ -7,7 +7,5 @@ class TestMatch(BaseTest):
     def test_match(self):
         self.assertTrue(self.root / "whatever", "w*")
 
-
-class TestMatch(BaseTest):
     def test_matchcase(self):
         self.assertTrue(self.root / "Whatever", "what*")
