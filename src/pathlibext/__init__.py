@@ -5,6 +5,7 @@ from pathlibext.rmtree import _rmtree
 from pathlibext.find import _find
 from pathlibext.tmpdir import _systmpdir, _tmpdir_in, _tmpdir
 from pathlibext.stat import _size, _access_time, _modification_time,_ctime
+from pathlibext.shell import _copy, _copy_preserve_metadata, _move
 
 Path.rmtree = _rmtree
 Path.find = _find
@@ -22,5 +23,6 @@ if os.name == 'Windows':
 else:
     Path.metadatachange_time = _ctime
 
-
-# name matches = fnmatch (Path("whatever").match("w*") == True)
+Path.copy = _copy
+Path.copy_preserve_metadata = _copy_preserve_metadata
+Path.move = _move
