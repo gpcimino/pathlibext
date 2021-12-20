@@ -9,12 +9,19 @@ class BaseTest(unittest.TestCase):
     def setUp(self):
         self.__tmpdir = tempfile.TemporaryDirectory()
         self.root = Path(self.__tmpdir.name)
-        # self.root = Path.mktempdir()
+
+    def create_file_tree(self):
         self.files = [
-            self.root / "a.txt",
-            self.root / "b.dat",
-            self.root / "d" / "a.txt",
-            self.root / "d" / "b.dat",
+            self.root / "f1.txt",
+            self.root / "f2.dat",
+            self.root / "a" / "f1.txt",
+            self.root / "a" / "f2.dat",
+            self.root / "a" / "b" / "f1.txt",
+            self.root / "a" / "b" / "f2.dat",
+            self.root / "a" / "b" / "c" / "f1.txt",
+            self.root / "a" / "b" / "c" / "f2.dat",
+            self.root / "a" / "b" / "c" / "d" / "f1.txt",
+            self.root / "a" / "b" / "c" / "d" / "f2.dat",
         ]
         for f in self.files:
             f.parent.mkdir(parents=True, exist_ok=True)

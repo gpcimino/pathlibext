@@ -4,6 +4,10 @@ import pathlibext  # pylint: disable=unused-import
 
 
 class TestRmtree(BaseTest):
+    def setUp(self):
+        super().setUp()
+        self.create_file_tree()
+
     def test_remove_files(self):
         self.root.rmtree()
         self.assertFalse(self.root.exists())
