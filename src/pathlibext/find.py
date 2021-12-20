@@ -24,21 +24,4 @@ def _find(self: Path = ".", type_: str = "fd", wildcards: str = None, mindepth=0
             del dirs[:]  # too deep, don't recurse
         else:
             continue # need to go deeper
-#
-# def _find(self, mindepth=0, maxdepth=float("inf"), type_=None, name=None):
-#     rootdir = str(self)
-#     root_depth = rootdir.rstrip(os.path.sep).count(os.path.sep) - 1
-#     for dirpath, dirs, files in os.walk(rootdir):
-#         depth = dirpath.count(os.path.sep) - root_depth
-#         if mindepth <= depth <= maxdepth:
-#             if type_ is None or type_ == "d":
-#                 for dirname in dirs:
-#                     if name is None or fnmatch.fnmatch(dirname, name):
-#                         yield Path(os.path.join(dirpath, dirname))
-#             if type_ is None or type_ == "f":
-#                 for filename in files:
-#                     if name is None or fnmatch.fnmatch(filename, name):
-#                         yield Path(os.path.join(dirpath, filename))
-#         elif depth > maxdepth:
-#             del dirs[:]  # too deep, don't recurse
 
