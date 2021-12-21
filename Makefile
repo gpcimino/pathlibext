@@ -83,3 +83,14 @@ clean-test:
 build:
 	${PIP} install -U build
 	${PYTHON} -m build
+
+test-build:
+	mkdir -p testbuild
+	${SYSPYTHON} -m venv testbuild/.venvbuild
+	testbuild/.venvbuild/bin/python -m pip install "$(shell ls -t -d -1  dist/* | head -n 1)"
+	testbuild/.venvbuild/bin/python -c "from pathlib import Path; import pathlibext; print(Path.systmpdir());"
+	rm -rf testbuild
+
+publish:
+	${PIP} install --upgrade twine
+	${PYTHON} -m twine upload --config-file "$(shell find ~ -path ./mnt -prune -o -name '.pypirc' -print)" --repository testpypi dist/*.whl
