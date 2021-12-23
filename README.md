@@ -56,3 +56,5 @@ if __name__ == '__main__':
  - **System temporary directory as Path**: Path.systmpdir()
  - **Create temporary directory as Path in existing directory**: Path("tmp").tmpdir_in()
  - **Create temporary directory as Path**: Path().tmpdir()
+ - **Current file path**: Path.current_file_path()
+ - **Current file directory**: Path.current_file_dir()

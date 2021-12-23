@@ -13,6 +13,8 @@ from pathlibext.stat import _size
 from pathlibext.tmpdir import _systmpdir
 from pathlibext.tmpdir import _tmpdir
 from pathlibext.tmpdir import _tmpdir_in
+from pathlibext.workdir import _current_file_dir
+from pathlibext.workdir import _current_file_path
 
 Path.rmtree = _rmtree
 Path.find = _find
@@ -33,3 +35,6 @@ else:
 Path.copy = _copy
 Path.copy_preserve_metadata = _copy_preserve_metadata
 Path.move = _move
+
+Path.current_file_path = _current_file_path
+Path.current_file_dir = _current_file_dir
