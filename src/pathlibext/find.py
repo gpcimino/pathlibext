@@ -6,7 +6,7 @@ from pathlib import Path
 def _find(
     self: Path = ".",
     type_: str = "fd",
-    wildcards: str = None,
+    name: str = None,
     mindepth: int = 0,
     maxdepth: int = 64000,
 ):
@@ -20,13 +20,13 @@ def _find(
         if mindepth <= depth <= maxdepth:
             top = Path(top)
             if "f" in type_:
-                for name in files:
-                    if wildcards is None or fnmatch.fnmatch(name, wildcards):
-                        yield top / name
+                for filename in files:
+                    if name is None or fnmatch.fnmatch(filename, name):
+                        yield top / filename
             if "d" in type_:
-                for name in dirs:
-                    if wildcards is None or fnmatch.fnmatch(name, wildcards):
-                        yield top / name
+                for dirname in dirs:
+                    if name is None or fnmatch.fnmatch(dirname, name):
+                        yield top / dirname
         elif depth > maxdepth:
             del dirs[:]  # too deep, don't recurse
         else:
