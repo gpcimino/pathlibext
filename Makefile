@@ -91,6 +91,10 @@ test-build:
 	testbuild/.venvbuild/bin/python -c "from pathlib import Path; import pathlibext; print(Path.systmpdir());"
 	rm -rf testbuild
 
-publish:
+testpublish:
 	${PIP} install --upgrade twine
 	${PYTHON} -m twine upload --config-file "$(shell find ~ -path ./mnt -prune -o -name '.pypirc' -print)" --repository testpypi dist/*.whl
+
+publish:
+	${PIP} install --upgrade twine
+	${PYTHON} -m twine upload --config-file "$(shell find ~ -path ./mnt -prune -o -name '.pypirc' -print)" --repository pypi dist/*.whl
