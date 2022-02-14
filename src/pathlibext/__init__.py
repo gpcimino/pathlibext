@@ -15,6 +15,8 @@ from pathlibext.tmpdir import _tmpdir
 from pathlibext.tmpdir import _tmpdir_in
 from pathlibext.workdir import _current_file_dir
 from pathlibext.workdir import _current_file_path
+from pathlibext.tmpfile import _write_text_tmp_file
+from pathlibext.tmpfile import _tmp_file
 
 Path.rmtree = _rmtree
 Path.find = _find
@@ -38,3 +40,6 @@ Path.move = _move
 
 Path.current_file_path = _current_file_path
 Path.current_file_dir = _current_file_dir
+
+Path.write_text_tmp_file=_write_text_tmp_file
+Path.tmp_file=_tmp_file
