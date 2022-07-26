@@ -4,7 +4,7 @@ from pathlib import Path
 
 
 def _find(
-    self: Path = ".",
+    self: Path,
     type_: str = "fd",
     name: str = None,
     mindepth: int = 0,

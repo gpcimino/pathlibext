@@ -26,7 +26,7 @@ class TestStat(BaseTest):
             datetime.fromtimestamp(expected_access_time), file.access_time()
         )
 
-    @unittest.skipIf(os.name == "Windows", "Run only on linux/mac")
+    @unittest.skipIf(os.name == "Windows", "Run only on POSIX")
     def test_creation_time(self):
         file = self.root / "test.txt"
         file.write_text("abc")
