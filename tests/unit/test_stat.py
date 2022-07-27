@@ -22,24 +22,18 @@ class TestStat(BaseTest):
         file = self.root / "test.txt"
         file.write_text("abc")
         expected_access_time = os.stat(str(file)).st_atime
-        self.assertEqual(
-            datetime.fromtimestamp(expected_access_time), file.access_time()
-        )
+        self.assertEqual(datetime.fromtimestamp(expected_access_time), file.access_time())
 
-    @unittest.skipIf(os.name == "Windows", "Run only on POSIX")
+    @unittest.skipIf(os.name == "nt", "Run only on POSIX")
     def test_creation_time(self):
         file = self.root / "test.txt"
         file.write_text("abc")
         expected_access_time = os.stat(str(file)).st_ctime
-        self.assertEqual(
-            datetime.fromtimestamp(expected_access_time), file.metadatachange_time()
-        )
+        self.assertEqual(datetime.fromtimestamp(expected_access_time), file.metadatachange_time())
 
-    @unittest.skipIf(os.name != "Windows", "Run only on windows")
+    @unittest.skipIf(os.name != "nt", "Run only on Windows")
     def test_metadatachange_time(self):
         file = self.root / "test.txt"
         file.write_text("abc")
         expected_access_time = os.stat(str(file)).st_ctime
-        self.assertEqual(
-            datetime.fromtimestamp(expected_access_time), file.creation_time()
-        )
+        self.assertEqual(datetime.fromtimestamp(expected_access_time), file.creation_time())

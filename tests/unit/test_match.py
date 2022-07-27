@@ -7,14 +7,14 @@ from tests.base_test import BaseTest
 
 class TestMatch(BaseTest):
     def test_match(self):
-        self.assertTrue(Path("/foo/BAR.txt").match("*BAR*"))
-        if os.name == "Windows":
-            # On windows match() is case insensitive
-            self.assertTrue(Path("/foo/BAR.txt").match("*bar*"))
+        self.assertTrue((self.root / "foo" / "BAR.txt").match("*BAR*"))
+        if os.name == "nt":
+            # On Windows match() is case insensitive
+            self.assertTrue((self.root / "foo" / "BAR.txt").match("*bar*"))
         else:
             # On POSIX match() is case sensitive
-            self.assertFalse(Path("/foo/BAR.txt").match("*bar*"))
+            self.assertFalse((self.root / "foo" / "BAR.txt").match("*bar*"))
 
     def test_matchcase(self):
-        self.assertTrue(Path("/foo/BAR.txt").matchcase("*BAR*"))
-        self.assertFalse(Path("/foo/BAR.txt").matchcase("*bar*"))
+        self.assertTrue((self.root / "foo" / "BAR.txt").matchcase("*BAR*"))
+        self.assertFalse((self.root / "foo" / "BAR.txt").matchcase("*bar*"))

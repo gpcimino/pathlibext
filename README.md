@@ -76,7 +76,7 @@ import pathlibext  # pylint: disable=unused-import
 
 print(Path("/foo/BAR.txt").match("*BAR*")) # True
 
-if os.name == "Windows":
+if os.name == "nt":
     # On windows match() is case insensitive
     print(Path("/foo/BAR.txt").match("*bar*")) # True
 else:

@@ -31,7 +31,7 @@ Path.size = _size
 Path.access_time = _access_time
 Path.modification_time = _modification_time
 
-if os.name == "Windows":
+if os.name == "nt":
     Path.creation_time = _ctime
 else:
     Path.metadatachange_time = _ctime
