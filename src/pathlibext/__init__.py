@@ -19,6 +19,8 @@ from pathlibext.tmpfile import _write_text_tmpfile
 from pathlibext.tmpfile import _tmpfile
 from pathlibext.match import _match
 from pathlibext.match import _matchcase
+from pathlibext.json import _write_json
+from pathlibext.json import _read_json
 
 Path.rmtree = _rmtree
 Path.find = _find
@@ -48,3 +50,6 @@ Path.tmpfile = _tmpfile
 
 Path.match = _match
 Path.matchcase = _matchcase
+
+Path.read_json = _read_json
+Path.write_json = _write_json
